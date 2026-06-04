@@ -63,3 +63,17 @@ public:
         std::cout << name << " thrusts for " << baseDamage << " piercing damage. [Durability: " << durability << "%]\n";
     }
 };
+class BrassKnuckles : public MeleeWeapon {
+public:
+    BrassKnuckles(std::string name, int damage, double weight)
+        : MeleeWeapon(std::move(name), damage, weight, 100) {}
+
+    void attack() override {
+        if (durability <= 0) {
+            std::cout << name << "'s straps have snapped.\n";
+            return;
+        }
+        durability -= 2;
+        std::cout << name << " connects for " << baseDamage << " bludgeoning damage. [Durability: " << durability << "%]\n";
+    }
+};
