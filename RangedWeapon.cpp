@@ -50,3 +50,34 @@ public:
         std::cout << name << " fires a burst for " << baseDamage * 3 << " damage. [" << currentAmmo << " rounds left]\n";
     }
 };
+
+class Bow : public RangedWeapon {
+public:
+    Bow(std::string name, int damage, double weight, int maxAmmo)
+        : RangedWeapon(std::move(name), damage, weight, maxAmmo, "arrows") {}
+
+    void attack() override {
+        if (currentAmmo == 0) {
+            std::cout << name << "'s quiver is empty.\n";
+            return;
+        }
+        currentAmmo--;
+        std::cout << name << " looses an arrow for " << baseDamage << " damage. [" << currentAmmo << " arrows left]\n";
+    }
+};
+
+class Crossbow : public RangedWeapon {
+public:
+    Crossbow(std::string name, int damage, double weight, int maxAmmo)
+        : RangedWeapon(std::move(name), damage, weight, maxAmmo, "bolts") {}
+
+    void attack() override {
+        if (currentAmmo == 0) {
+            std::cout << name << " needs to be reloaded.\n";
+            return;
+        }
+        currentAmmo--;
+        int actualDamage = static_cast<int>(baseDamage * 1.3);
+        std::cout << name << " fires a bolt for " << actualDamage << " damage. [" << currentAmmo << " bolts left]\n";
+    }
+};
