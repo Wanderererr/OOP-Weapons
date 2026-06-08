@@ -1,8 +1,8 @@
 #include <iostream>
-#include <Arsenal.cpp> 
-#include <MeleeWeapon.cpp> 
-#include <RangedWeaon.cpp> 
-#include <Weapon.cpp> 
+#include "Arsenal.cpp" 
+#include "MeleeWeapon.cpp"
+#include "RangedWeaon.cpp"
+#include "Weapon.cpp"
 
 void testInitialization() {
     Sword s("Sting", 30, 1.5);
